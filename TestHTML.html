@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="QuickSort.js"></script>
+    <script src="MergeSort.js"></script>
+    <script src="InsertionSort.js"></script>
+    <script src="SelectionSort.js"></script>
+    <script src="displayArray.js"></script>
+    <script src="arrayGenerator.js"></script>
+</head>
+<body>
+<canvas id= "myCanvas" width="800" height="800" style="border:1px solid"></canvas>
+<script>
+    var generator = new arrayGenerator();
+    generator.generate(400, 0, 800);
+    var arrayCopy = [...generator.array];
+
+    //var QS = new QuickSort([4,8,6,5,3]);
+    //var QS = new QuickSort(arrayCopy);
+    //var MS = new MergeSort(arrayCopy);
+    //var IS = new InsertionSort(arrayCopy);
+    var SS = new SelectionSort(arrayCopy);
+    
+</script>
+</body>
+</html>

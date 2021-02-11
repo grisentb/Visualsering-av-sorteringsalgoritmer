@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="QuickSort.js"></script>
+    <script src="MergeSort.js"></script>
+    <script src="InsertionSort.js"></script>
+    <script src="SelectionSort.js"></script>
+    <script src="displayArray.js"></script>
+    <script src="arrayGenerator.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <button type="button" onclick="start(1)">MergeSort</button>
+    <button type="button" onclick="start(2)">QuickSort</button>
+    <button type="button" onclick="start(3)">InsertionSort</button>
+    <button type="button" onclick="start(4)">SelectionSort</button>
+    <div>
+        Speed slider:
+        <input type="range" min="1" max="400" value="50" class="slider" id="timeSlider">
+    </div>
+    <div>
+        Number of elements:
+        <input type="range" min="20" max="400" value="100" class="slider" id="elementsSlider">
+    </div>
+    <script>
+        //Generates a random set of ints in an array
+        var generator = new arrayGenerator();
+        var size = 200;
+
+        //Slider to control how fast the UI displays the sorting algorithms
+        var timeSlider = document.getElementById("timeSlider");
+        timeSlider.oninput = function()
+        {
+            displayArray.time = this.value;
+            console.log("Slide: " + displayArray.time);
+        }
+        //Slider to control the number of elements in an array
+        var elementsSlider = document.getElementById("elementsSlider");
+        elementsSlider.oninput = function()
+        {
+            size = this.value;
+            console.log("Size: " + size);
+        }
+
+        //Function to start an algorithm
+        function start(alt)
+        {
+            if(alt == 1){var MS = new MergeSort(generator.generate(size, 0, 800));}
+            else if(alt==2){var QS = new QuickSort(generator.generate(size, 0, 800));}
+            else if(alt==3){var IS = new InsertionSort(generator.generate(size, 0, 800));}
+            else if(alt==4){var SS = new SelectionSort(generator.generate(size, 0, 800));}
+        }
+    </script>
+    <canvas id= "myCanvas" width="800" height="800" style="border:1px solid"></canvas>
+</body>
